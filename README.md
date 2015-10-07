@@ -9,3 +9,5 @@ Pharmacy,
 Natural Sciences, 
 Computer Science and Language, 
 MSISS
+
+The majority of this was written in a night for a friend, the code is pretty horrible. Sorry.
