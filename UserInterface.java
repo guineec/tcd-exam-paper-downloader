@@ -1,3 +1,4 @@
+//TODO: Add 'Choose Directory' button and set up file chooser.
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -13,6 +14,7 @@ public class UserInterface implements ActionListener {
 	private JLabel paperLabel;
 	private JLabel yearLabel;
 	private JLabel courseLabel;
+    private JFileChooser fileChooser;
 	private String year;
 	private String standing;
 	private int courseNum;
@@ -26,6 +28,7 @@ public class UserInterface implements ActionListener {
 	private final int PCAM = 440;
 	private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law"};
 	private JLabel status;
+	private String directory = "";
 
 	public UserInterface() {
 		j = new JFrame("TCD Exam Paper Downloader");
@@ -43,6 +46,7 @@ public class UserInterface implements ActionListener {
 		paperLabel = new JLabel("  Year (1998 - 2012):");
 		yearLabel = new JLabel("  Standing (JF = 1, SF = 2, JS = 3, SS = 4): ");
 		courseLabel = new JLabel("  Select Course: ");
+        fileChooser = new JFileChooser("./");
 		status = new JLabel(" Enter request...");
 
 		new JLabel("");
@@ -93,10 +97,10 @@ public class UserInterface implements ActionListener {
 					courseNum = DEFAULT_COURSE_CS;
 				}
 
-				if(allBox.isSelected() == false) {
+				if(!allBox.isSelected()) {
 					year = paperYear.getText();
 					if((Integer.parseInt(year) > 1997 && Integer.parseInt(year) < 2013) && (Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5) ) {
-						dl = new Downloader(year, standing, courseNum);
+						dl = new Downloader(year, standing, courseNum, directory);
 						System.out.println(year + standing + courseNum);
 						boolean success = dl.getPapers();
 						if(success) {
@@ -115,8 +119,7 @@ public class UserInterface implements ActionListener {
 				} else if(allBox.isSelected()) {
 					if(Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5 ) {
 						for(int y = 1998; y < 2013; y++) {
-							dl = new Downloader(("" + y), standing, courseNum);
-							//Yep, I did just do ^^ that... WHAT?
+							dl = new Downloader(("" + y), standing, courseNum, directory);
 							boolean success = dl.getPapers();
 							if(success) {
 								status.setForeground(Color.green);
@@ -134,7 +137,7 @@ public class UserInterface implements ActionListener {
 					paperYear.setEnabled(false);
 					paperLabel.setEnabled(false);
 					paperLabel.setText("  Downloading all years.");
-				} else if(allBox.isSelected() == false) {
+				} else if(!allBox.isSelected()) {
 					paperYear.setEnabled(true);
 					paperLabel.setEnabled(true);
 					paperLabel.setText("  Year (1998 - 2012):");

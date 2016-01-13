@@ -8,14 +8,16 @@ public class Downloader {
 	private String fullURL;
 	private String tcdURL = "https://www.tcd.ie";
 	private String year;
+	private String chosenPath = "";
 	private String stand;
 
 
-	public Downloader(String yr, String stnd, int course) {
+	public Downloader(String yr, String stnd, int course, String path) {
 		fullURL = "https://www.tcd.ie/Local/Exam_Papers/annual_search.cgi?Course=" + course + "&Standing=" + stnd
 				+ "&acyear=" + yr + "&annual_search.cgi=Search";
 		year = yr;
 		stand = stnd;
+		chosenPath = path;
 	}
 
 	public boolean getPapers() {
@@ -34,11 +36,11 @@ public class Downloader {
 					if(!localURL.equals("http://www.tcd.ie/Local/Exam_Papers/summer_nonTSM.html") && !localURL.equals("http://www.tcd.ie/Local/Exam_Papers/pink_fab.jpg")) {
 						String fullURL = tcdURL + localURL;
 
-						boolean getPDFSuccess = new PDFSaver(fullURL).getPDF(year, stand);
+						boolean getPDFSuccess = new PDFSaver(fullURL, chosenPath).getPDF(year, stand);
 
 
 
-						if(getPDFSuccess == false) {
+						if(!getPDFSuccess) {
 							System.out.println("File at URL: " + fullURL + " could not be downloaded.");
 							urlFinder.close();
 						} else {
@@ -55,7 +57,7 @@ public class Downloader {
 
 			return true;
 		} catch (IOException e) {
-			System.out.println("Error with URL, tell Cian about this error Chris. Also, have a nice day. WOoOOOOoooOO!");
+			System.out.println("Error with URL, email cian.guinee@gmail.com with this message.");
 			return false;
 		}
 	}

@@ -10,10 +10,11 @@ import java.io.IOException;
 public class PDFSaver {
 	private String url;
 	private String filename;
+	private String pathToDirectory;
 
-	public PDFSaver(String link) {
+	public PDFSaver(String link, String chosenDir) {
 		url = link;
-
+		pathToDirectory = chosenDir;
 		Scanner linkScan = new Scanner(link);
 		linkScan.useDelimiter("/");
 		for(int i = 0; i < 8; i++) {
@@ -42,8 +43,8 @@ public class PDFSaver {
 				
 				URL website = new URL(url);
 				ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-				File folder = new File(stand + "/" + year);
-				folder.mkdirs();
+				File folder = pathToDirectory .equals("")? new File(stand + "/" + year): new File(pathToDirectory + "/" + stand + "/" + year);
+                if(!folder.mkdirs()) System.out.println("Error creating directories. Files might not be where you want!");
 				FileOutputStream fos = new FileOutputStream(folder + "/" + filename);
 				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 				fos.close();
