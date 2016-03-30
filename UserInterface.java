@@ -66,6 +66,7 @@ public class UserInterface implements ActionListener {
 		j.add(yearLabel);
 		j.add(personYear);
 		j.add(allBox);
+		j.add(fileChooser);
 		j.add(status);
 		j.add(help);
 		j.add(downloadButton);
