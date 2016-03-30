@@ -14,7 +14,6 @@ public class UserInterface implements ActionListener {
 	private JLabel paperLabel;
 	private JLabel yearLabel;
 	private JLabel courseLabel;
-    private JFileChooser fileChooser;
 	private String year;
 	private String standing;
 	private int courseNum;
@@ -46,7 +45,6 @@ public class UserInterface implements ActionListener {
 		paperLabel = new JLabel("  Year (1998 - 2012):");
 		yearLabel = new JLabel("  Standing (JF = 1, SF = 2, JS = 3, SS = 4): ");
 		courseLabel = new JLabel("  Select Course: ");
-        fileChooser = new JFileChooser("./");
 		status = new JLabel(" Enter request...");
 
 		new JLabel("");
@@ -66,7 +64,6 @@ public class UserInterface implements ActionListener {
 		j.add(yearLabel);
 		j.add(personYear);
 		j.add(allBox);
-		j.add(fileChooser);
 		j.add(status);
 		j.add(help);
 		j.add(downloadButton);
