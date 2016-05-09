@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
+
     <list default="true" id="259c376b-a948-4f37-a13a-94a57dad7f18" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Downloader.class" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Launcher.class" />
@@ -18,12 +18,11 @@
     </list>
     <ignored path="tcd-exam-paper-downloader.iws" />
     <ignored path=".idea/workspace.xml" />
-=======
+
     <list default="true" id="aa664540-d6ab-4db3-8c77-a2e573294bb8" name="Default" comment="" />
     <ignored path="tcd-exam-paper-downloader.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
->>>>>>> experimental
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,21 +39,18 @@
     <favorites_list name="tcd-exam-paper-downloader" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
     <leaf>
       <file leaf-file-name="Downloader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Downloader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Downloader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Downloader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="855">
               <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
->>>>>>> experimental
               <folding />
             </state>
           </provider>
@@ -73,13 +69,11 @@
       <file leaf-file-name="PDFSaver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PDFSaver.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
+
             <state relative-caret-position="45">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-=======
             <state relative-caret-position="600">
               <caret line="46" column="119" selection-start-line="46" selection-start-column="119" selection-end-line="46" selection-end-column="119" />
->>>>>>> experimental
               <folding />
             </state>
           </provider>
@@ -88,27 +82,26 @@
       <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
+
             <state relative-caret-position="344">
               <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
               <folding />
-=======
+
             <state relative-caret-position="15">
               <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
->>>>>>> experimental
+
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-<<<<<<< HEAD
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-=======
+
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>

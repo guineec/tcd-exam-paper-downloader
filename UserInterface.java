@@ -5,71 +5,71 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UserInterface implements ActionListener {
-        private JFrame j;
-        private JButton downloadButton;
-        private JButton help;
-        private JTextField paperYear;
-        private JTextField personYear;
-        private JComboBox<String> courseBox;
-        private JCheckBox allBox;
-        private JLabel paperLabel;
-        private JLabel yearLabel;
-        private JLabel courseLabel;
-        private String year;
-        private String standing;
-        private int courseNum;
-        private Downloader dl;
-        private final int DEFAULT_COURSE_CS = 19;
-        private final int CSL = 57;
-        private final int PHARMACY = 16;
-        private final int MSISS = 18;
-        private final int LAW = 51;
-        private final int NAT_SCIENCE = 15;
-        private final int PCAM = 440;
-        private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law"};
-        private JLabel status;
-        private String directory = "";
+    private JFrame j;
+    private JButton downloadButton;
+    private JButton help;
+    private JTextField paperYear;
+    private JTextField personYear;
+    private JComboBox<String> courseBox;
+    private JCheckBox allBox;
+    private JLabel paperLabel;
+    private JLabel yearLabel;
+    private JLabel courseLabel;
+    private String year;
+    private String standing;
+    private int courseNum;
+    private Downloader dl;
+    private final int DEFAULT_COURSE_CS = 19;
+    private final int CSL = 57;
+    private final int PHARMACY = 16;
+    private final int MSISS = 18;
+    private final int LAW = 51;
+    private final int NAT_SCIENCE = 15;
+    private final int PCAM = 440;
+    private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law"};
+    private JLabel status;
+    private String directory = "";
 
-        public UserInterface() {
-            j = new JFrame("TCD Exam Paper Downloader");
-            downloadButton = new JButton("Get Papers");
-            help = new JButton("Help");
-            allBox = new JCheckBox("GET ALL YEARS ", false);
-            allBox.addActionListener(this);
-            downloadButton.addActionListener(this);
-            help.addActionListener(this);
-            courseBox = new JComboBox<String>(COURSES);
-            courseBox.setSelectedIndex(0);
-            courseBox.addActionListener(this);
-            paperYear = new JTextField(10);
-            personYear = new JTextField(10);
-            paperLabel = new JLabel("  Year (1998 - 2012):");
-            yearLabel = new JLabel("  Standing (JF = 1, SF = 2, JS = 3, SS = 4): ");
-            courseLabel = new JLabel("  Select Course: ");
-            status = new JLabel(" Enter request...");
+    public UserInterface() {
+        j = new JFrame("TCD Exam Paper Downloader");
+        downloadButton = new JButton("Get Papers");
+        help = new JButton("Help");
+        allBox = new JCheckBox("GET ALL YEARS ", false);
+        allBox.addActionListener(this);
+        downloadButton.addActionListener(this);
+        help.addActionListener(this);
+        courseBox = new JComboBox<String>(COURSES);
+        courseBox.setSelectedIndex(0);
+        courseBox.addActionListener(this);
+        paperYear = new JTextField(10);
+        personYear = new JTextField(10);
+        paperLabel = new JLabel("  Year (1998 - 2012):");
+        yearLabel = new JLabel("  Standing (JF = 1, SF = 2, JS = 3, SS = 4): ");
+        courseLabel = new JLabel("  Select Course: ");
+        status = new JLabel(" Enter request...");
 
-            new JLabel("");
-            courseNum = DEFAULT_COURSE_CS;
-            GridLayout grid = new GridLayout(5, 1);
-            grid.setHgap(10);
-            grid.setVgap(10);
-            j.setLocation(360, 200);
-            j.setSize(600, 180);
-            j.setResizable(false);
-            j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            j.setLayout(grid);
-            j.add(courseLabel);
-            j.add(courseBox);
-            j.add(paperLabel);
-            j.add(paperYear);
-            j.add(yearLabel);
-            j.add(personYear);
-            j.add(allBox);
-            j.add(status);
-            j.add(help);
-            j.add(downloadButton);
-            j.setVisible(true);
-        }
+        new JLabel("");
+        courseNum = DEFAULT_COURSE_CS;
+        GridLayout grid = new GridLayout(5, 1);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        j.setLocation(360, 200);
+        j.setSize(600, 180);
+        j.setResizable(false);
+        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j.setLayout(grid);
+        j.add(courseLabel);
+        j.add(courseBox);
+        j.add(paperLabel);
+        j.add(paperYear);
+        j.add(yearLabel);
+        j.add(personYear);
+        j.add(allBox);
+        j.add(status);
+        j.add(help);
+        j.add(downloadButton);
+        j.setVisible(true);
+    }
 
     public void actionPerformed(ActionEvent e) {
         try {
@@ -84,59 +84,67 @@ public class UserInterface implements ActionListener {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        standing = personYear.getText();
-                        String courseSetting = courseBox.getSelectedItem().toString();
+                        try {
 
-                        if (courseSetting.equalsIgnoreCase("pharmacy")) {
-                            courseNum = PHARMACY;
-                        } else if (courseSetting.equalsIgnoreCase("computer science linguistics and a language")) {
-                            courseNum = CSL;
-                        } else if (courseSetting.equalsIgnoreCase("msiss")) {
-                            courseNum = MSISS;
-                        } else if (courseSetting.equalsIgnoreCase("law")) {
-                            courseNum = LAW;
-                        } else if (courseSetting.equalsIgnoreCase("natural sciences (general science)")) {
-                            courseNum = NAT_SCIENCE;
-                        } else if (courseSetting.equalsIgnoreCase("physics and chemistry of advanced materials (nanoscience)")) {
-                            courseNum = PCAM;
-                        } else {
-                            courseNum = DEFAULT_COURSE_CS;
-                        }
 
-                        if (!allBox.isSelected()) {
-                            year = paperYear.getText();
-                            if ((Integer.parseInt(year) > 1997 && Integer.parseInt(year) < 2013) && (Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5)) {
-                                dl = new Downloader(year, standing, courseNum, directory);
-                                System.out.println(year + standing + courseNum);
-                                boolean success = dl.getPapers();
-                                if (success) {
-                                    status.setForeground(Color.green);
-                                    status.setText(" Download Complete.");
-                                } else {
-                                    status.setForeground(Color.RED);
-                                    status.setText(" Error in request.");
-                                    JOptionPane.showMessageDialog(j, "Download unsuccessful. You probably made a mistake entering year or standing.");
-                                }
+                            standing = personYear.getText();
+                            String courseSetting = courseBox.getSelectedItem().toString();
+
+                            if (courseSetting.equalsIgnoreCase("pharmacy")) {
+                                courseNum = PHARMACY;
+                            } else if (courseSetting.equalsIgnoreCase("computer science linguistics and a language")) {
+                                courseNum = CSL;
+                            } else if (courseSetting.equalsIgnoreCase("msiss")) {
+                                courseNum = MSISS;
+                            } else if (courseSetting.equalsIgnoreCase("law")) {
+                                courseNum = LAW;
+                            } else if (courseSetting.equalsIgnoreCase("natural sciences (general science)")) {
+                                courseNum = NAT_SCIENCE;
+                            } else if (courseSetting.equalsIgnoreCase("physics and chemistry of advanced materials (nanoscience)")) {
+                                courseNum = PCAM;
                             } else {
-                                status.setForeground(Color.RED);
-                                status.setText(" Error in request.");
-                                JOptionPane.showMessageDialog(j, "You didn't enter a valid year/standing.");
+                                courseNum = DEFAULT_COURSE_CS;
                             }
-                        } else if (allBox.isSelected()) {
-                            if (Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5) {
-                                for (int y = 1998; y < 2013; y++) {
-                                    dl = new Downloader(("" + y), standing, courseNum, directory);
+
+                            if (!allBox.isSelected()) {
+                                year = paperYear.getText();
+                                if ((Integer.parseInt(year) > 1997 && Integer.parseInt(year) < 2013) && (Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5)) {
+                                    dl = new Downloader(year, standing, courseNum, directory);
+                                    System.out.println(year + standing + courseNum);
                                     boolean success = dl.getPapers();
                                     if (success) {
                                         status.setForeground(Color.green);
-                                        status.setText("Download Complete");
+                                        status.setText(" Download Complete.");
                                     } else {
                                         status.setForeground(Color.RED);
-                                        status.setText("Error in Request.");
+                                        status.setText(" Error in request.");
                                         JOptionPane.showMessageDialog(j, "Download unsuccessful. You probably made a mistake entering year or standing.");
+                                    }
+                                } else {
+                                    status.setForeground(Color.RED);
+                                    status.setText(" Error in request.");
+                                    JOptionPane.showMessageDialog(j, "You didn't enter a valid year/standing.");
+                                }
+                            } else if (allBox.isSelected()) {
+                                if (Integer.parseInt(standing) > 0 && Integer.parseInt(standing) < 5) {
+                                    for (int y = 1998; y < 2013; y++) {
+                                        dl = new Downloader(("" + y), standing, courseNum, directory);
+                                        boolean success = dl.getPapers();
+                                        if (success) {
+                                            status.setForeground(Color.green);
+                                            status.setText("Download Complete");
+                                        } else {
+                                            status.setForeground(Color.RED);
+                                            status.setText("Error in Request.");
+                                            JOptionPane.showMessageDialog(j, "Download unsuccessful. You probably made a mistake entering year or standing.");
+                                        }
                                     }
                                 }
                             }
+                        } catch (Exception exception) {
+                            status.setForeground(Color.RED);
+                            status.setText("Error in request.");
+                            JOptionPane.showMessageDialog(j, "Exception Raised. Did you fill out all fields?");
                         }
                     }
                 }).start();
@@ -163,6 +171,10 @@ public class UserInterface implements ActionListener {
             status.setForeground(Color.RED);
             status.setText(" Error in request.");
             JOptionPane.showMessageDialog(j, "Error. Did you leave a field blank?");
+        } catch (Exception exc) {
+            status.setForeground(Color.RED);
+            status.setText("Error in request.");
+            JOptionPane.showMessageDialog(j, "Exception Raised: " + exc.toString());
         }
     }
 }
