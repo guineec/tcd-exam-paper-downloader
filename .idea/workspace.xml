@@ -2,6 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="259c376b-a948-4f37-a13a-94a57dad7f18" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Downloader.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Launcher.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PDFSaver.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UserInterface$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UserInterface$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UserInterface.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UserInterface.java" afterPath="$PROJECT_DIR$/UserInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tcd-exam-paper-downloader.iml" afterPath="$PROJECT_DIR$/tcd-exam-paper-downloader.iml" />
     </list>
