@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UserInterface implements ActionListener {
+<<<<<<< HEAD
     private JFrame j;
     private JButton downloadButton;
     private JButton help;
@@ -49,6 +50,50 @@ public class UserInterface implements ActionListener {
         courseLabel = new JLabel("  Select Course: ");
         fileChooser = new JFileChooser("./");
         status = new JLabel(" Enter request...");
+=======
+	private JFrame j;
+	private JButton downloadButton;
+	private JButton help;
+	private JTextField paperYear;
+	private JTextField personYear;
+	private JComboBox<String> courseBox;
+	private JCheckBox allBox;
+	private JLabel paperLabel;
+	private JLabel yearLabel;
+	private JLabel courseLabel;
+	private String year;
+	private String standing;
+	private int courseNum;
+	private Downloader dl;
+	private final int DEFAULT_COURSE_CS = 19;
+	private final int CSL = 57;
+	private final int PHARMACY = 16;
+	private final int MSISS = 18;
+	private final int LAW = 51;
+	private final int NAT_SCIENCE = 15;
+	private final int PCAM = 440;
+	private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law"};
+	private JLabel status;
+	private String directory = "";
+
+	public UserInterface() {
+		j = new JFrame("TCD Exam Paper Downloader");
+		downloadButton = new JButton("Get Papers");
+		help = new JButton("Help");
+		allBox = new JCheckBox("GET ALL YEARS ", false);
+		allBox.addActionListener(this);
+		downloadButton.addActionListener(this);
+		help.addActionListener(this);
+		courseBox = new JComboBox<String>(COURSES);
+		courseBox.setSelectedIndex(0);
+		courseBox.addActionListener(this);
+		paperYear = new JTextField(10);
+		personYear = new JTextField(10);
+		paperLabel = new JLabel("  Year (1998 - 2012):");
+		yearLabel = new JLabel("  Standing (JF = 1, SF = 2, JS = 3, SS = 4): ");
+		courseLabel = new JLabel("  Select Course: ");
+		status = new JLabel(" Enter request...");
+>>>>>>> experimental
 
         new JLabel("");
         courseNum = DEFAULT_COURSE_CS;
