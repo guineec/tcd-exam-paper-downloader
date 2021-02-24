@@ -26,7 +26,8 @@ public class UserInterface implements ActionListener {
     private final int LAW = 51;
     private final int NAT_SCIENCE = 15;
     private final int PCAM = 440;
-    private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law"};
+    private final int ENGLISH = 48;
+    private final String[] COURSES = {"Integrated Computer Science", "Pharmacy", "Natural Sciences (General Science)", "Physics and Chemistry of Advanced Materials (Nanoscience)", "Computer Science, Linguistics and a Language", "MSISS", "Law", "English"};
     private JLabel status;
     private String directory = "";
 
@@ -102,6 +103,8 @@ public class UserInterface implements ActionListener {
                                 courseNum = NAT_SCIENCE;
                             } else if (courseSetting.equalsIgnoreCase("physics and chemistry of advanced materials (nanoscience)")) {
                                 courseNum = PCAM;
+                            } else if(courseSetting.equalsIgnoreCase("english")) {
+                                courseNum = ENGLISH;
                             } else {
                                 courseNum = DEFAULT_COURSE_CS;
                             }
