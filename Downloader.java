@@ -11,7 +11,6 @@ public class Downloader {
     private String chosenPath = "";
     private String stand;
 
-
     public Downloader(String yr, String stnd, int course, String path) {
         fullURL = "https://www.tcd.ie/Local/Exam_Papers/annual_search.cgi?Course=" + course + "&Standing=" + stnd
                 + "&acyear=" + yr + "&annual_search.cgi=Search";
@@ -33,11 +32,11 @@ public class Downloader {
                 if (urlFinder.hasNext()) {
                     String localURL = urlFinder.next();
 
-                    if (!localURL.equals("http://www.tcd.ie/Local/Exam_Papers/summer_nonTSM.html") && !localURL.equals("http://www.tcd.ie/Local/Exam_Papers/pink_fab.jpg")) {
+                    if (!localURL.equals("http://www.tcd.ie/Local/Exam_Papers/summer_nonTSM.html")
+                            && !localURL.equals("http://www.tcd.ie/Local/Exam_Papers/pink_fab.jpg")) {
                         String fullURL = tcdURL + localURL;
 
                         boolean getPDFSuccess = new PDFSaver(fullURL, chosenPath).getPDF(year, stand);
-
 
                         if (!getPDFSuccess) {
                             System.out.println("File at URL: " + fullURL + " could not be downloaded.");
@@ -56,7 +55,7 @@ public class Downloader {
 
             return true;
         } catch (IOException e) {
-            System.out.println("Error with URL, email cian.guinee@gmail.com with this message.");
+            System.out.println("Error with URL.");
             return false;
         }
     }
